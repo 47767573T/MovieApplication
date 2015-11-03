@@ -21,7 +21,6 @@ import java.util.Arrays;
 
 import retrofit.Call;
 import retrofit.Callback;
-import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 import retrofit.http.GET;
@@ -35,7 +34,6 @@ public class MainActFragment extends Fragment {
 
     private ArrayList<String> listMovie = new ArrayList<>();
     private ArrayAdapter adapterMovie;
-
     private ListView lvMovie;
 
     private View vRoot;
@@ -58,13 +56,13 @@ public class MainActFragment extends Fragment {
         vRoot = inflater.inflate(R.layout.fragment_main, container, false);
 
         String[] peliEjemplo = {
-                "id1 - Nombre pelicula1",
-                "id2 - Nombre pelicula2",
-                "id3 - Nombre pelicula3"
+                "id1 - Nombre pelicula1 - Año 1",
+                "id2 - Nombre pelicula2 - Año 2",
+                "id3 - Nombre pelicula3 - Año 3"
 
         };
 
-        lvMovie = (ListView)vRoot.findViewById(R.id.lvMain);
+        lvMovie = (ListView)vRoot.findViewById(R.id.lvMovieMain);
 
         adapterMovie = new ArrayAdapter<>(
                 getContext(),
@@ -73,7 +71,7 @@ public class MainActFragment extends Fragment {
                 listMovie
         );
 
-        ListView lvMovie = (ListView) vRoot.findViewById(R.id.lvMovieMain);
+        lvMovie = (ListView) vRoot.findViewById(R.id.lvMovieMain);
         lvMovie.setAdapter(adapterMovie);
 
         return vRoot;
@@ -86,22 +84,21 @@ public class MainActFragment extends Fragment {
         inflater.inflate(R.menu.menu_movie_fragment, menu);
     }
 
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getIdemId();
+        int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         if (id == R.id.action_refresh) {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
-    private void refresh(){
+    /*private void refresh(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("").addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -112,7 +109,7 @@ public class MainActFragment extends Fragment {
         movieCall.enqueue(new Callback<Movie>(){
             @Override
             public void onResponse(Response<Movie> response, Retrofit retrofit) {
-               // Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -120,7 +117,7 @@ public class MainActFragment extends Fragment {
                 //Log.w(null, Arrays.toString(t.getStackTrace()));
             }
         });
-    }
+    }*/
 
 
     public interface MovieService {
