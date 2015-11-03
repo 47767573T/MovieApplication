@@ -45,14 +45,13 @@ public class MainActFragment extends Fragment {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(menu);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setHasOptionsMenu(menu);
         vRoot = inflater.inflate(R.layout.fragment_main, container, false);
 
         String[] peliEjemplo = {                    //creamos un ejemplo de lo que enlistaremos
@@ -97,31 +96,28 @@ public class MainActFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    /*private void refresh(){
+/*
+    private void refresh(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("").addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://api.themoviedb.org/3/movie/550?")
                 .build();
 
-        MovieService service = retrofit.create(MovieService);
+        MovieService service = retrofit.create(MovieService.class);
 
         Call<Movie> movieCall = service.dailyMovie();
         movieCall.enqueue(new Callback<Movie>(){
             @Override
             public void onResponse(Response<Movie> response, Retrofit retrofit) {
-                Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_LONG).show();
-            }
+
 
             @Override
             public void onFailure(Throwable t) {
                 //Log.w(null, Arrays.toString(t.getStackTrace()));
             }
         });
-    }*/
+    }
 
 
     public interface MovieService {
-        @GET("")
-        Call<Movie> favoriteMovie();
-    }
+    }*/
 }
