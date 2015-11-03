@@ -46,25 +46,25 @@ public class MainActFragment extends Fragment {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setHasOptionsMenu(menu);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        setHasOptionsMenu(menu);
         vRoot = inflater.inflate(R.layout.fragment_main, container, false);
 
-        String[] peliEjemplo = {
+        String[] peliEjemplo = {                    //creamos un ejemplo de lo que enlistaremos
                 "id1 - Nombre pelicula1 - Año 1",
                 "id2 - Nombre pelicula2 - Año 2",
                 "id3 - Nombre pelicula3 - Año 3"
 
         };
 
-        lvMovie = (ListView)vRoot.findViewById(R.id.lvMovieMain);
-
-        adapterMovie = new ArrayAdapter<>(
+        lvMovie = (ListView)vRoot.findViewById(R.id.lvMovieMain); //referenciamos el listview del fragment_main
+        listMovie = new ArrayList(Arrays.asList(peliEjemplo));
+        adapterMovie = new ArrayAdapter<String>(
                 getContext(),
                 R.layout.lv_moviemain,
                 R.id.movieTextView,
