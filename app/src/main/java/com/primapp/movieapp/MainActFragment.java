@@ -96,8 +96,14 @@ public class MainActFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-/*
-    private void refresh(){
+
+    /*@Override
+    public void onStart() {
+        super.onStart();
+        refresh();
+    }*/
+
+    /*private void refresh(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/movie/550?")
                 .build();
@@ -109,15 +115,19 @@ public class MainActFragment extends Fragment {
             @Override
             public void onResponse(Response<Movie> response, Retrofit retrofit) {
 
+            }
+
 
             @Override
             public void onFailure(Throwable t) {
                 //Log.w(null, Arrays.toString(t.getStackTrace()));
             }
         });
-    }
+    }*/
 
 
-    public interface MovieService {
+    /*public interface MovieService {
+
+
     }*/
 }

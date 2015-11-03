@@ -9,7 +9,7 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,4 +51,5 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
