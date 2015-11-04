@@ -26,6 +26,8 @@ import retrofit.Retrofit;
 import retrofit.http.GET;
 
 
+
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -70,7 +72,6 @@ public class MainActFragment extends Fragment {
                 listMovie
         );
 
-        lvMovie = (ListView) vRoot.findViewById(R.id.lvMovieMain);
         lvMovie.setAdapter(adapterMovie);
 
         return vRoot;
@@ -97,13 +98,13 @@ public class MainActFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    /*@Override
+    @Override
     public void onStart() {
         super.onStart();
         refresh();
-    }*/
+    }
 
-    /*private void refresh(){
+    private void refresh(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/movie/550?")
                 .build();
@@ -123,11 +124,11 @@ public class MainActFragment extends Fragment {
                 //Log.w(null, Arrays.toString(t.getStackTrace()));
             }
         });
-    }*/
+    }
 
 
-    /*public interface MovieService {
+    public interface MovieService {
 
 
-    }*/
+    }
 }
