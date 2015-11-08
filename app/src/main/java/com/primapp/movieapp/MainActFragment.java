@@ -122,11 +122,16 @@ public class MainActFragment extends Fragment {
 
         iMovieService service = retrofit.create(iMovieService.class);
 
-        Call<ApiData> movieCall = service.getFavoriteMovies(sesionId);
+        Call<ApiData> movieCall = service.getFavoriteMovies(sesionId, apiKey);
         movieCall.enqueue(new Callback<ApiData>(){
             @Override
             public void onResponse(Response<ApiData> response, Retrofit retrofit) {
-                if (response.isSuccess()) Log.d(null, "OK");
+                if (response.isSuccess()){
+                    Log.d(null, "OK");
+                    ApiData apiData = response.body();
+                    Log.e("Pelicula: ", apiData.getMovies().toString());
+                } else { Log.d("RESPUESTA", response.errorBody().toString());}
+
             }
 
             @Override
@@ -140,7 +145,10 @@ public class MainActFragment extends Fragment {
     public interface iMovieService {
 
         @GET ("favorites/movies")
-        Call<ApiData> getFavoriteMovies(@Query("id") String Sesion);
+        Call<ApiData> getFavoriteMovies(
+                @Query("id") String Sesion,
+                @Query("apikey") String apiKey);
+
 
         @GET ("rated/movies")
         Call<ApiData> getRatedMovies(@Query("id") String Sesion);
