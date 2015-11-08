@@ -3,7 +3,6 @@ package com.primapp.movieapp;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,20 +12,11 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.primapp.movieapp.json.ApiData;
-import com.primapp.movieapp.json.Movie;
-import com.primapp.movieapp.service.MovieApiClient;
+import com.primapp.movieapp.service.MovieApiRetrofit;
+import com.primapp.movieapp.service.MovieApiRetrofitGeneral;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import retrofit.GsonConverterFactory;
-
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
-import retrofit.http.GET;
-import retrofit.http.Query;
 
 
 /**
@@ -108,8 +98,7 @@ public class MainActFragment extends Fragment {
     }
 
     private void refresh(){
-        MovieApiClient movieApiService = new MovieApiClient();
+        MovieApiRetrofitGeneral movieApiService = new MovieApiRetrofitGeneral();
         movieApiService.getFavoritesMovies(adapterMovie);
-
     }
 }

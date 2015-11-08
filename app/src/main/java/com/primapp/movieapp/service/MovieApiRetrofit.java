@@ -19,24 +19,19 @@ import retrofit.http.Query;
 /**
  * Created by 47767573t on 04/11/15.
  */
-public class MovieApiClient {
+public class MovieApiRetrofit {
         String apiKey = "e6f2c549601727fca2e90f4291bbe34d";
         String sesionId = "47767573t";
         String urlBase = "https://api.themoviedb.org/3/";
         String mode = "";
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        iMovieService service = retrofit.create(iMovieService.class);
-
-        public MovieApiClient() {
+        public MovieApiRetrofit() {
             super();
         }
 
     public void getFavoritesMovies(final ArrayAdapter adapter){
+
+        final String urlEnd = "favorite/movie";
 
         Call<ApiData> movieCall = service.getFavoriteMovies(sesionId, apiKey);
         movieCall.enqueue(new Callback<ApiData>(){
