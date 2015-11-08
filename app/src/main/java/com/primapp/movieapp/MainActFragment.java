@@ -43,9 +43,6 @@ public class MainActFragment extends Fragment {
     private View vRoot;
     Boolean menu = true;
 
-    private String UrlBase;
-    private String ApiKey = "e6f2c549601727fca2e90f4291bbe34d";
-    private String SesionId = "47767573t";
 
 
     public MainActFragment() {
@@ -112,32 +109,41 @@ public class MainActFragment extends Fragment {
     }
 
     private void refresh(){
+        String apiKey = "e6f2c549601727fca2e90f4291bbe34d";
+        String sesionId = "47767573t";
+        String urlBase = "https://api.themoviedb.org/3/";
+        String mode = "";
+
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/movie/")
+                .baseUrl("https://api.themoviedb.org/3/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-/*
-        movieServiceI service = retrofit.create(movieServiceI.class);
 
-        Call<Movie> movieCall = service.getFavoriteMovies();
-        movieCall.enqueue(new Callback<Movie>(){
+        iMovieService service = retrofit.create(iMovieService.class);
+
+        Call<ApiData> movieCall = service.getFavoriteMovies(sesionId);
+        movieCall.enqueue(new Callback<ApiData>(){
             @Override
-            public void onResponse(Response<Movie> response, Retrofit retrofit) {
-
+            public void onResponse(Response<ApiData> response, Retrofit retrofit) {
+                if (response.isSuccess()) Log.d(null, "OK");
             }
 
             @Override
             public void onFailure(Throwable t) {
-                //Log.w(null, Arrays.toString(t.getStackTrace()));
+                Log.w(null, Arrays.toString(t.getStackTrace()));
             }
         });
-    }*/
+    }
 
 
-    public interface movieServiceI {
+    public interface iMovieService {
 
-        @GET ("favorites/movies");
-        Call<ApiData> getFavoriteMovies(@Query("country") String pais );
+        @GET ("favorites/movies")
+        Call<ApiData> getFavoriteMovies(@Query("id") String Sesion);
+
+        @GET ("rated/movies")
+        Call<ApiData> getRatedMovies(@Query("id") String Sesion);
 
 
 
