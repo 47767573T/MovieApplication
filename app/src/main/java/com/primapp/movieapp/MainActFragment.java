@@ -1,10 +1,8 @@
 package com.primapp.movieapp;
 
-import android.graphics.Movie;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.primapp.movieapp.json.ApiData;
-import com.primapp.movieapp.service.MovieService;
+import com.primapp.movieapp.json.Movie;
+import com.primapp.movieapp.service.MovieApiClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,52 +108,8 @@ public class MainActFragment extends Fragment {
     }
 
     private void refresh(){
-        String apiKey = "e6f2c549601727fca2e90f4291bbe34d";
-        String sesionId = "47767573t";
-        String urlBase = "https://api.themoviedb.org/3/";
-        String mode = "";
-
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        iMovieService service = retrofit.create(iMovieService.class);
-
-        Call<ApiData> movieCall = service.getFavoriteMovies(sesionId, apiKey);
-        movieCall.enqueue(new Callback<ApiData>(){
-            @Override
-            public void onResponse(Response<ApiData> response, Retrofit retrofit) {
-                if (response.isSuccess()){
-                    Log.d(null, "OK");
-                    ApiData apiData = response.body();
-                    Log.e("Pelicula: ", apiData.getMovies().toString());
-                } else { Log.d("RESPUESTA", response.errorBody().toString());}
-
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                Log.w(null, Arrays.toString(t.getStackTrace()));
-            }
-        });
-    }
-
-
-    public interface iMovieService {
-
-        @GET ("favorites/movies")
-        Call<ApiData> getFavoriteMovies(
-                @Query("id") String Sesion,
-                @Query("apikey") String apiKey);
-
-
-        @GET ("rated/movies")
-        Call<ApiData> getRatedMovies(@Query("id") String Sesion);
-
-
-
+        MovieApiClient movieApiService = new MovieApiClient();
+        movieApiService.getFavoritesMovies(adapterMovie);
 
     }
 }
