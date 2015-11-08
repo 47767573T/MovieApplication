@@ -3,12 +3,12 @@ package com.primapp.movieapp.json;
 /**
  * Created by Moises on 02/11/2015.
  */
-public class MovieModelo {
+public class Movie {
 
     private int id;
     private String titulo, posterRuta;
 
-    public MovieModelo(){
+    public Movie(){
     }
 
     public int getId(){return id;}

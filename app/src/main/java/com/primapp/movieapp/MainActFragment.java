@@ -63,7 +63,7 @@ public class MainActFragment extends Fragment {
         };
 
         lvMovie = (ListView)vRoot.findViewById(R.id.lvFragment_Main); //referenciamos el listview del fragment_main
-        listMovie = new ArrayList(Arrays.asList(peliEjemplo));
+        listMovie = new ArrayList<>(Arrays.asList(peliEjemplo));
         adapterMovie = new ArrayAdapter<>(
                 getContext(),
                 R.layout.lv_moviemain,
@@ -86,13 +86,15 @@ public class MainActFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_settings) {
             return true;
         }
+
         if (id == R.id.action_refresh) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -101,7 +103,7 @@ public class MainActFragment extends Fragment {
         super.onStart();
         //refresh();
     }
-/*
+
     private void refresh(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/movie/550?")
@@ -128,5 +130,5 @@ public class MainActFragment extends Fragment {
     public interface MovieService {
 
 
-    }*/
+    }
 }
