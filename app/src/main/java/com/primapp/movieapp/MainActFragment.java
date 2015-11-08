@@ -101,9 +101,9 @@ public class MainActFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        refresh();
+        //refresh();
     }
-
+/*
     private void refresh(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/movie/550?")
@@ -130,5 +130,5 @@ public class MainActFragment extends Fragment {
     public interface MovieService {
 
 
-    }
+    }*/
 }
