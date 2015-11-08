@@ -34,8 +34,8 @@ import retrofit.http.GET;
 public class MainActFragment extends Fragment {
 
 
-    private ArrayList<String> listMovie = new ArrayList<>();
-    private ArrayAdapter adapterMovie;
+    private ArrayList<String> listMovie;
+    private ArrayAdapter<String> adapterMovie;
     private ListView lvMovie;
 
     private View vRoot;
@@ -60,18 +60,16 @@ public class MainActFragment extends Fragment {
                 "id1 - Nombre pelicula1 - Año 1",
                 "id2 - Nombre pelicula2 - Año 2",
                 "id3 - Nombre pelicula3 - Año 3"
-
         };
 
-        lvMovie = (ListView)vRoot.findViewById(R.id.lvMovieMain); //referenciamos el listview del fragment_main
+        lvMovie = (ListView)vRoot.findViewById(R.id.lvFragment_Main); //referenciamos el listview del fragment_main
         listMovie = new ArrayList(Arrays.asList(peliEjemplo));
-        adapterMovie = new ArrayAdapter<String>(
+        adapterMovie = new ArrayAdapter<>(
                 getContext(),
                 R.layout.lv_moviemain,
-                R.id.movieTextView,
+                R.id.tvMovie,
                 listMovie
         );
-
         lvMovie.setAdapter(adapterMovie);
 
         return vRoot;
