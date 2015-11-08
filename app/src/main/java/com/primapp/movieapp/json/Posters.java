@@ -13,7 +13,7 @@ public class Posters {
         private String profile;
         private String detailed;
         private String original;
-        private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+        private Map<String, Object> additionalProperties = new HashMap<>();
     
         /**
           * @return The thumbnail

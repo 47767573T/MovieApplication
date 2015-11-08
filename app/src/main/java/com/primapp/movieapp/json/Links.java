@@ -14,7 +14,7 @@ public class Links {
     
     private String self;
     private String alternate;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
     
              /**
        * @return The self

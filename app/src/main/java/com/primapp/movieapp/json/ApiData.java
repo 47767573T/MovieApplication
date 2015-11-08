@@ -12,10 +12,10 @@ import java.util.Map;
  */
 public class ApiData {
     
-     private List<Movie> movies = new ArrayList<Movie>();
+     private List<Movie> movies = new ArrayList<>();
      private Links links;
      private String linkTemplate;
-     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+     private Map<String, Object> additionalProperties = new HashMap<>();
 
              /**
        * @return The movies
