@@ -15,6 +15,9 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.primapp.movieapp.json.ApiData;
+import com.primapp.movieapp.service.MovieService;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import retrofit.GsonConverterFactory;
@@ -24,8 +27,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 import retrofit.http.GET;
-
-
+import retrofit.http.Query;
 
 
 /**
@@ -42,6 +44,9 @@ public class MainActFragment extends Fragment {
     Boolean menu = true;
 
     private String UrlBase;
+    private String ApiKey = "e6f2c549601727fca2e90f4291bbe34d";
+    private String SesionId = "47767573t";
+
 
     public MainActFragment() {
     }
@@ -108,29 +113,33 @@ public class MainActFragment extends Fragment {
 
     private void refresh(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.themoviedb.org/3/movie/")
+                .baseUrl("https://api.themoviedb.org/3/movie/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+/*
+        movieServiceI service = retrofit.create(movieServiceI.class);
 
-        MovieService service = retrofit.create(MovieService.class);
-
-        Call<Movie> movieCall = service.dailyMovie();
+        Call<Movie> movieCall = service.getFavoriteMovies();
         movieCall.enqueue(new Callback<Movie>(){
             @Override
             public void onResponse(Response<Movie> response, Retrofit retrofit) {
 
             }
 
-
             @Override
             public void onFailure(Throwable t) {
                 //Log.w(null, Arrays.toString(t.getStackTrace()));
             }
         });
-    }
+    }*/
 
 
-    public interface MovieService {
+    public interface movieServiceI {
+
+        @GET ("favorites/movies");
+        Call<ApiData> getFavoriteMovies(@Query("country") String pais );
+
+
 
 
     }
