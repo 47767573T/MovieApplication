@@ -97,7 +97,49 @@ public class MainActFragment extends Fragment {
     }
 
     private void refresh(){
+<<<<<<< HEAD
         MovieApiRetrofit movieApiService = new MovieApiRetrofit();
         movieApiService.getFavoritesMovies(adapterMovie);
+=======
+        String apiKey = "e6f2c549601727fca2e90f4291bbe34d";
+        String sesionId = "47767573t";
+        String urlBase = "https://api.themoviedb.org/3/";
+        String mode = "";
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.themoviedb.org/3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        iMovieService service = retrofit.create(iMovieService.class);
+
+        Call<ApiData> movieCall = service.getFavoriteMovies(sesionId);
+        movieCall.enqueue(new Callback<ApiData>(){
+            @Override
+            public void onResponse(Response<ApiData> response, Retrofit retrofit) {
+                if (response.isSuccess()) Log.d(null, "OK");
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.w(null, Arrays.toString(t.getStackTrace()));
+            }
+        });
+    }
+
+
+    public interface iMovieService {
+
+        @GET ("favorites/movies")
+        Call<ApiData> getFavoriteMovies(@Query("id") String Sesion);
+
+        @GET ("rated/movies")
+        Call<ApiData> getRatedMovies(@Query("id") String Sesion);
+
+
+
+
+>>>>>>> parent of 3d095a7... añadimos  mas mensajes debug y agregamos apikey
     }
 }
