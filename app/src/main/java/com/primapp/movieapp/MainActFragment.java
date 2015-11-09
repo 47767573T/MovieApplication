@@ -3,6 +3,7 @@ package com.primapp.movieapp;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,20 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.primapp.mMovieApplication.R;
+import com.primapp.movieapp.json.ApiData;
 import com.primapp.movieapp.service.MovieApiRetrofit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
+import retrofit.http.GET;
+import retrofit.http.Query;
 
 
 /**
@@ -97,10 +108,6 @@ public class MainActFragment extends Fragment {
     }
 
     private void refresh(){
-<<<<<<< HEAD
-        MovieApiRetrofit movieApiService = new MovieApiRetrofit();
-        movieApiService.getFavoritesMovies(adapterMovie);
-=======
         String apiKey = "e6f2c549601727fca2e90f4291bbe34d";
         String sesionId = "47767573t";
         String urlBase = "https://api.themoviedb.org/3/";
@@ -131,7 +138,7 @@ public class MainActFragment extends Fragment {
 
     public interface iMovieService {
 
-        @GET ("favorites/movies")
+        @GET("favorites/movies")
         Call<ApiData> getFavoriteMovies(@Query("id") String Sesion);
 
         @GET ("rated/movies")
@@ -140,6 +147,6 @@ public class MainActFragment extends Fragment {
 
 
 
->>>>>>> parent of 3d095a7... añadimos  mas mensajes debug y agregamos apikey
+
     }
 }

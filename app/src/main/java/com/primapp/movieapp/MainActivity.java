@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.primapp.mMovieApplication.R;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
