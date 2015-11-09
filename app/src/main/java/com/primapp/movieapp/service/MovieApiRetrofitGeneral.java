@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -35,6 +36,8 @@ public class MovieApiRetrofitGeneral {
         String sesionId = "47767573t";
         String urlBase = "https://api.themoviedb.org/3/";
         String mode = "account/";
+
+
 
         /*Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/")
@@ -61,13 +64,14 @@ public class MovieApiRetrofitGeneral {
         try {
             URL url = new URL(builtUri.toString());
 
-            DownloadMoviesTask task = new DownloadMoviesTask();
-            task.execute(adapter, url);
+            DownloadMoviesTask dmTask = new DownloadMoviesTask();
+            dmTask.execute(adapter, url);
 
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
 
         public class DownloadMoviesTask extends AsyncTask<Object, Void, ArrayList<String>> {
 
@@ -98,7 +102,7 @@ public class MovieApiRetrofitGeneral {
                     List<Movie> movies = apiData.getMovies();
 
                     for (Movie movie : movies) {
-                        movieTitles.add(movie.getTitle());
+                        movieTitles.add(movie.getTitulo());
                     }
 
                 } catch (IOException e) {
@@ -122,17 +126,16 @@ public class MovieApiRetrofitGeneral {
         }
 
         @Override
-        protected void onProgressUpdate (Void...values){
+        protected void onProgressUpdate (Void... values){
              super.onProgressUpdate(values);
         }
 
-         @Override
-        protected void onPostExecute (ArrayList < String > movie) {
-            super.onPostExecute(movie);
+        @Override
+        protected void onPostExecute (ArrayList < String > movies) {
+            super.onPostExecute(movies);
     
             adapter.clear();
-            adapter.addAll(movie);
-    
+            adapter.addAll(movies);
         }
     }
 }
