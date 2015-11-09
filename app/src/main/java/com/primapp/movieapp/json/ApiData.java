@@ -20,7 +20,7 @@ public class ApiData {
              /**
        * @return The movies
        */
-             public List<com.primapp.movieapp.json.Movie> getMovies() {
+             public List<Movie> getMovies() {
              return movies;
          }
 
