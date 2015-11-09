@@ -33,7 +33,9 @@ public class MovieApiRetrofit {
 
         final String urlEnd = "favorite/movie";
 
-        Call<ApiData> movieCall = service.getFavoriteMovies(sesionId, apiKey);
+        iMovieService servicio = retrofit.create(iMovieService.class);
+
+        Call<ApiData> movieCall = servicio.getFavoriteMovies(apiKey);
         movieCall.enqueue(new Callback<ApiData>(){
             @Override
             public void onResponse(Response<ApiData> response, Retrofit retrofit) {
@@ -58,15 +60,14 @@ public class MovieApiRetrofit {
 
 
     interface iMovieService {
-        @GET("favorites/movies")
+        @GET("movie/popular")
         Call<ApiData> getFavoriteMovies(
-                @Query("id") String Sesion,
                 @Query("apikey") String apiKey
         );
 
-        @GET ("rated/movies")
+        @GET ("movie/top_rated")
         Call<ApiData> getRatedMovies(
-                @Query("id") String Sesion
+                @Query("apikey") String apiKey
         );
     }
 

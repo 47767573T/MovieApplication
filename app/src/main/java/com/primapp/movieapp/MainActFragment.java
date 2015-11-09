@@ -12,9 +12,6 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.primapp.movieapp.service.MovieApiRetrofit;
-import com.primapp.movieapp.service.MovieApiRetrofitGeneral;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
