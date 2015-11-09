@@ -33,6 +33,11 @@ public class MovieApiRetrofit {
 
         final String urlEnd = "favorite/movie";
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(urlBase)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
         iMovieService servicio = retrofit.create(iMovieService.class);
 
         Call<ApiData> movieCall = servicio.getFavoriteMovies(apiKey);

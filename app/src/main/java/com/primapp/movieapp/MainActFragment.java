@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.primapp.movieapp.service.MovieApiRetrofit;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -95,7 +97,7 @@ public class MainActFragment extends Fragment {
     }
 
     private void refresh(){
-        MovieApiRetrofitGeneral movieApiService = new MovieApiRetrofitGeneral();
+        MovieApiRetrofit movieApiService = new MovieApiRetrofit();
         movieApiService.getFavoritesMovies(adapterMovie);
     }
 }
